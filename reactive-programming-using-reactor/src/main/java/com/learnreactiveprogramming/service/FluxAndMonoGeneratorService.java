@@ -12,7 +12,7 @@ public class FluxAndMonoGeneratorService {
     }
 
     public Mono<String> namesMono() {
-        return Mono.just("alex");
+        return Mono.just("alex").log();
     }
     public static void main(String[] args) {
 
@@ -24,6 +24,10 @@ public class FluxAndMonoGeneratorService {
         fluxAndMonoGeneratorService.namesMono().subscribe(name -> {
             System.out.println("Mono Name is " + name);
         });
+
+//        fluxAndMonoGeneratorService.namesMono().doOnSuccess(name -> {
+//            System.out.println("The name is " + name);
+//        }).subscribe();
 
     }
 }
