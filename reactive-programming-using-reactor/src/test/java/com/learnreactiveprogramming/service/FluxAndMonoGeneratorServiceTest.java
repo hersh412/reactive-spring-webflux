@@ -10,7 +10,6 @@ class FluxAndMonoGeneratorServiceTest {
     FluxAndMonoGeneratorService fluxAndMonoGeneratorService = new FluxAndMonoGeneratorService();
 
     @Test
-    @DisplayName("Testing names flux returns what it is supposed to")
     void namesFlux() {
         var namesFlux = fluxAndMonoGeneratorService.namesFlux();
         StepVerifier.create(namesFlux)
@@ -18,6 +17,13 @@ class FluxAndMonoGeneratorServiceTest {
                 //.expectNextCount(3)
                 .expectNext("alex")
                 .expectNextCount(2)
+                .verifyComplete();
+    }
+    @Test
+    void namesFlux_map() {
+        var namesFlux = fluxAndMonoGeneratorService.namesFlux_map();
+        StepVerifier.create(namesFlux)
+                .expectNext("ALEX", "BEN", "CHLOE")
                 .verifyComplete();
     }
 }
