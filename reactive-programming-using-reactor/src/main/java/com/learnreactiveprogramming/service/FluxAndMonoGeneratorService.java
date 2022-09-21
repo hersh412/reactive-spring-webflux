@@ -11,10 +11,13 @@ public class FluxAndMonoGeneratorService {
         return Flux.fromIterable(List.of("alex", "ben", "chloe"));
     }
 
-    public Flux<String> namesFlux_map() {
+    public Flux<String> namesFlux_map(int stringLength) {
+        //filter the string whose length is > 3
         return Flux.fromIterable(List.of("alex", "ben", "chloe"))
                 .map(String:: toUpperCase)
 //                .map(s -> s.toUpperCase())
+                .filter(s -> s.length() > stringLength)
+                .map(s-> s.length() + "-"+s)
                 .log();
 
     }
