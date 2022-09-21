@@ -19,6 +19,12 @@ public class FluxAndMonoGeneratorService {
 
     }
 
+    public Flux<String> namesFlux_immutability () {
+        var namesFlux = Flux.fromIterable(List.of("alex", "ben", "chloe"));
+        namesFlux.map(String::toUpperCase);
+        return namesFlux;
+    }
+
     public Mono<String> namesMono() {
         return Mono.just("alex").log();
     }
